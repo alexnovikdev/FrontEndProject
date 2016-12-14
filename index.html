@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Website</title>
+		<meta charset = "utf-8" />
+		<link href = "css_reset.css" rel = "stylesheet" />
+		<link href = "divsite.css" rel = "stylesheet" />
+		<script src = "lib/jquery.js"></script>
+		<script>
+			$(function () {
+				$("input[type = 'submit']").on("click", function (e) {
+                    var allSelect = $("div#reg select").add("input.reginfo");
+                    var isEmpty = false;
+					$.each(allSelect, function (key, value) {
+                        if ($(value).val() == "Problem With" || $(value).val() == "Brand" || $(value).val() == "") {
+                            $(value).css("border-color", "red");
+                            isEmpty = true;
+                        } else {
+                            $(value).css("border-color", "");
+						}
+                    });
+					if (isEmpty == true) {
+					    e.preventDefault();
+					    alert("Please fill out all required fields marked in red.");
+					}
+                });
+
+				var video1 = $("#video1");
+				var video2 = $("#video2");
+				var video3 = $("#video3");
+
+				video1.on("mouseenter", function () {
+                    video1.get(0).play();
+                });
+				video1.on("mouseleave", function () {
+                    video1.get(0).pause();
+                });
+
+				video2.on("mouseenter", function () {
+                    video2.get(0).play();
+                });
+				video2.on("mouseleave", function () {
+                    video2.get(0).pause();
+                });
+
+				video3.on("mouseenter", function () {
+                    video3.get(0).play();
+                });
+				video3.on("mouseleave", function () {
+                    video3.get(0).pause();
+                });
+            });
+		</script>
+ 	</head>
+	<body>
+		<div id = "main">
+			<header>
+				<form action = "file.php" method = "post" >
+					<input type = "search" id = "search" name = "search" placeholder="Search..." />
+				</form>
+				<div id = "search_logo" ><a href = "#"><img src = "img/search.png" /></a></div>
+				<div id = "logo" ><a href = "#"><img src = "img/logo.png" /></a></div>
+			</header>
+			<div id = "face">
+				<div id = "slider">
+					<ul>
+						<li><img src = "img/slider.jpg" /></li>
+						<li><img src = "img/slider1.jpg" /></li>
+						<li><img src = "img/slider2.jpg" /></li>
+						<li><img src = "img/slider3.jpg" /></li>
+					</ul>
+					<div class = "show"><button id = "prev"></button></div>
+					<div class = "show"><button id = "next"></button></div>
+				</div>
+				<nav>
+						<ul>
+							<li><a href = "#" >Home</a>
+								<ul class = "inner" >
+									<li><a href = "#" >Submenu1</a></li>
+									<li><a href = "#" >Submenu2</a></li>
+									<li><a href = "#" >Submenu3</a></li>
+								</ul>
+							</li>
+							<li><a href = "#" >Sliders</a>
+								<ul class = "inner" >
+									<li><a href = "#" >Submenu1</a></li>
+									<li><a href = "#" >Submenu2</a></li>
+									<li><a href = "#" >Submenu3</a></li>
+								</ul>
+							</li>
+							<li><a href = "#" >Portfolio</a>
+								<ul class = "inner" >
+									<li><a href = "#" >Submenu1</a></li>
+									<li><a href = "#" >Submenu2</a></li>
+									<li><a href = "#" >Submenu3</a></li>
+								</ul>
+							</li>
+							<li><a href = "#" >Styles</a>
+								<ul class = "inner" >
+									<li><a href = "#" >Submenu1</a></li>
+									<li><a href = "#" >Submenu2</a></li>
+									<li><a href = "#" >Submenu3</a></li>
+								</ul>
+							</li>
+							<li><a href = "#" >Blog</a>
+								<ul class = "inner" >
+									<li><a href = "#" >Submenu1</a></li>
+									<li><a href = "#" >Submenu2</a></li>
+									<li><a href = "#" >Submenu3</a></li>
+								</ul>
+							</li>
+							<li><a href = "#" >Cherry</a>
+								<ul class = "inner" >
+									<li><a href = "#" >Submenu1</a></li>
+									<li><a href = "#" >Submenu2</a></li>
+									<li><a href = "#" >Submenu3</a></li>
+								</ul>
+							</li>
+							<li><a href = "#" >Contact</a>
+								<ul class = "inner" >
+									<li><a href = "#" >Submenu1</a></li>
+									<li><a href = "#" >Submenu2</a></li>
+									<li><a href = "#" >Submenu3</a></li>
+								</ul>
+							</li>
+						</ul>
+						<div id = "clear3" ></div>
+				</nav>
+				<div id = "history">
+					<a class = "linkmenu2" href = "index.html">Home</a> /
+					<a class = "linkmenu2" href = "#" >Another page</a> /
+					<a class = "linkmenu2" href = "index.html">This page</a>
+				</div>
+				<div id = "content">
+					<aside>
+						<div id = "reg" >
+							<form action = "file.php" method = "post" >
+								<span>Contact Us</span>
+								<input type = "text" name = "name" class = "reginfo" value = "" required="required" placeholder="Your Name" />
+								<input type = "tel" name = "tel" class = "reginfo" required="required" placeholder="Daytime Number"  />
+								<input type = "email" name = "email" required="required" placeholder="Email Address" title = "Формат данных не правильный" class = "reginfo" />
+								<input type = "text" name = "city" required="required" placeholder="City" class = "reginfo" />
+								<select name = "problem" >
+									<option>Problem With</option>
+									<option value = "Health" >Health</option>
+									<option value = "Friends" >Friends</option>
+									<option value = "Girl" >Girl</option>
+								</select>
+								<select name = "brand" >
+									<option>Brand</option>
+									<option value = "apple" >Apple</option>
+									<option value = "google" >Google</option>
+									<option value = "microsoft" >Microsoft</option>
+								</select>
+								<input type = "submit" name = "submit" value = "Submit" />
+							</form>
+						</div>
+						<div id = "lefttext" >
+							<span>
+								<span id = "headline" >Headline</span> <br/> <br/>
+								Whether it’s the presentation of your food at a fancy restaurant
+								or the latest Apple product, humans just seem to love things that
+								are beautifully designed. And the same goes for your website. If
+								you’re not presenting your visitors with an attractive site and
+								packaging your products nicely, you’re definitely leaving money
+								on the table. <br/> <br/>
+								<a href = "#" >More about</a>
+							</span>
+						</div> 
+					</aside>
+					<section>
+						<div id = "whatwedo" >
+							<img src = "img/title1.png" /> 
+							<br/>
+							<br/>
+							<span>
+								Whether it’s the presentation of your food at a fancy restaurant
+								or the latest Apple product, humans just seem to love things that 
+								are beautifully designed. <a href = "#" >And the same goes for your website.</a> If
+								you’re not presenting your visitors with an attractive site and 
+								packaging your products nicely, you’re definitely leaving money
+								on the table.
+							</span>
+						</div>
+						<div id = "imagecont">
+							<div class = "cellforimage" >
+								<div class = "nameimages" ><a href="#" >Admin Panel</a></div>
+								<div class = "video">
+									<video id = "video1" width="194px" height="140px" poster="poster.PNG">
+										<source src="video/vsvideo.mp4" />
+										<source src="video/vsvideo.ogg" />
+										<source src="video/vsvideo.webm" />
+									</video>
+								</div>
+							</div>	
+							<div class = "cellforimage">
+								<div class = "nameimages" ><a href = "#" >Shortcodes</a></div>
+								<div class = "video">
+									<video id = "video2" width="194px" height="140px" poster="poster.PNG">
+										<source src="video/vsvideo.mp4" />
+										<source src="video/vsvideo.ogg" />
+										<source src="video/vsvideo.webm" />
+									</video>
+								</div>
+							</div>	
+							<div class = "cellforimage">
+								<div class = "nameimages" ><a href = "#" >Videos</a></div>
+								<div class = "video">
+									<video id = "video3" width="194px" height="140px" poster="poster.PNG">
+										<source src="video/vsvideo.mp4" />
+										<source src="video/vsvideo.ogg" />
+										<source src="video/vsvideo.webm" />
+									</video>
+								</div>
+							</div>	
+							<div id = "clear1" ></div>
+						</div>
+						<div id = "list">
+							<img src = "img/title2.png" />
+						</div>
+						<div id = "test" >
+							<div class = "threelist" >
+								<span>Unordered list</span> 
+								<ul id = "unor" >
+									<li>Whether it’s the</li>
+									<li>presentation of your</li>
+									<li>food at a fancy</li>
+									<li>restaurant or the</li>
+									<li>latest Apple product</li>
+									<li>humans just seem</li>
+									<li>to love things that</li>
+									<li>are beautifully designed</li>
+								</ul>
+							</div>
+							<div class = "threelist" >
+								<span>Ordered list</span>
+								<ol>
+									<li>Whether it’s the</li>
+									<li>presentation of your</li>
+									<li>food at a fancy</li>
+									<li>restaurant or the</li>
+									<li>latest Apple product</li>
+									<li>humans just seem</li>
+									<li>to love things that</li>
+									<li>are beautifully designed</li>
+								</ol>
+							</div>
+							<div class = "threelist" >
+								<span>Unordered list</span>
+								<ul>									
+									<li>Whether it’s the</li>
+									<li>presentation of your</li>
+									<li>food at a fancy</li>
+									<li>restaurant or the</li>
+									<li>latest Apple product</li>
+									<li>humans just seem</li>
+									<li>to love things that</li>
+									<li>are beautifully designed</li>
+								</ul>
+							</div>
+							<div id = "clear2"></div>
+						</div>						
+						<div id = "table" ><img src = "img/title3.png" /></div>
+						<table id = "maintable" >
+							<tr id = "firstrow" >
+								<td id = "topleft" >№</td>
+								<td>Hello</td>
+								<td>Hello</td>
+								<td>Hello</td>
+								<td id = "topright" >Hello</td>
+							</tr>
+							<tr class = "blackground" >
+								<td>1</td>
+								<td>Hello</td>
+								<td>Hello</td>
+								<td>Hello</td>
+								<td>Hello</td>
+							</tr>
+							<tr class = "blackground" >
+								<td>2</td>
+								<td>Hello</td>
+								<td>Hello</td>
+								<td>Hello</td>
+								<td>Hello</td>
+							</tr>
+							<tr class = "blackground" >
+								<td>3</td>
+								<td>Hello</td>
+								<td>Hello</td>
+								<td>Hello</td>
+								<td>Hello</td>
+							</tr>
+							<tr class = "blackground" >
+								<td>4</td>
+								<td>Hello</td>
+								<td>Hello</td>
+								<td>Hello</td>
+								<td>Hello</td>
+							</tr>
+							<tr class = "blackground" >
+								<td>5</td>
+								<td>Hello</td>
+								<td>Hello</td>
+								<td>Hello</td>
+								<td>Hello</td>
+							</tr>
+							<tr class = "blackground" >
+								<td>6</td>
+								<td>Hello</td>
+								<td>Hello</td>
+								<td>Hello</td>
+								<td>Hello</td>
+							</tr>
+							<tr class = "blackground" >
+								<td id = "botleft" >7</td>
+								<td>Hello</td>
+								<td>Hello</td>
+								<td>Hello</td>
+								<td id = "botright" >Hello</td>
+							</tr>
+						</table>
+					</section>
+					<div id = "clear4" ></div>
+				</div>
+			</div>
+			<footer>
+				<div class  = "footerlist" >
+					<ul>
+						<li>We are open 24/7</li>
+						<li>Night!</li>
+						<li>Weekends!</li>
+						<li>Holidays!</li>
+					</ul>
+				</div>
+				<div class  = "footerlist" >
+					<ul>
+						<li>West Hollywood</li>
+						<li>Beverly Hills</li>
+						<li>Pasadena</li>
+						<li>Los Angeles</li>
+					</ul>
+				</div>
+				<div class  = "footerlist" >
+					<ul>
+						<li>Alex Novik</li>
+						<li>ALEXN7 Company</li>
+						<li>alexnovikdev@gmail.com</li>
+						<li>Minsk, Belarus</li>
+					</ul>
+				</div>
+				<div id = "clear5" ></div>
+				<div id = "footerimg1" ><img src = "img/hours.jpg" /></div>
+				<div id = "footerimg2" ><img src = "img/local.jpg" /></div>
+				<div id = "footerimg3" ><img src = "img/location.jpg" /></div>
+			</footer>
+		</div>
+	<script src = "lib/mySlider.js"></script>
+	</body>
+</html>
